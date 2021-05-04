@@ -62,3 +62,32 @@ body {
   background-color: #ffd97d;
   color: #454140;
 }
+
+/* Sliders */
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 16px;
+  background-color: #ffebbecc;
+  border-radius: 100px;
+}
+
+/* For chrome, opera, safari, and edge */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  background: #ffd166;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+/* For firefox */
+.slider::-moz-range-thumb {
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  background: #ffd166;
+  border-radius: 100px;
+  cursor: pointer;
+}

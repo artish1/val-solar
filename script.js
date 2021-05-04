@@ -29,7 +29,18 @@ function registerFormButtons() {
   for (let i = 0; i < btns.length; i++) {}
 }
 
+//-------------------- Sliders --------------------
+function registerSliders() {
+  const electricBillSlider = document.querySelector("#electricBillSlider");
+  const electricBillDisplay = document.querySelector("#electricBillDisplay");
+  electricBillSlider.addEventListener("input", (e) => {
+    const val = electricBillSlider.value;
+    electricBillDisplay.textContent = `$${val}`;
+  });
+}
+
 window.addEventListener("load", () => {
   registerFormButtons();
+  registerSliders();
   setStep(currentStep);
 });

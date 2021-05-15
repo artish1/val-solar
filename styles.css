@@ -13,8 +13,10 @@
 
   --primary-color: #ffd97d;
   --primary-color-light: #ffe9b6b7;
-  --background-color: #f6f7f9;
+  --secondary-color: #4f517d;
+  --background-color: #e9ecee;
   --container-color: #ffffff;
+
   --text-color: #524e4d;
   --secondary-text-color: #6e6b6a;
 }
@@ -27,6 +29,27 @@ body {
   align-items: center;
   height: 100vh;
   font-family: "Nunito", sans-serif;
+}
+
+.back-arrow {
+  width: 24px;
+}
+
+.step input[type="text"] {
+  width: 100%;
+  border-radius: 12px;
+  height: 48px;
+  padding: 1rem 3rem 1rem 1rem;
+  /* background-color: #fff9e8; */
+  border: 1px solid black;
+
+  box-sizing: border-box;
+  margin-bottom: 24px;
+}
+
+.step input[type="text"]:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
 }
 
 .wave {
@@ -84,6 +107,7 @@ body {
   width: 100%;
   background-color: var(--primary-color);
   border-radius: 7px;
+  align-self: flex-start;
   transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
@@ -99,6 +123,7 @@ body {
 .step {
   display: none;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .step i {
@@ -110,7 +135,7 @@ body {
   text-align: center;
   font-size: 22px;
   margin: 24px;
-  color: var(--text-color);
+  color: black;
 }
 
 .step p {
@@ -121,6 +146,11 @@ body {
   margin-bottom: 24px;
   line-height: 1.2;
   letter-spacing: 1px;
+}
+.step .continue-button {
+  border: none;
+  background-color: var(--secondary-color);
+  color: white;
 }
 
 .step-container {
@@ -162,8 +192,24 @@ body {
   width: 100%;
   appearance: none;
   height: 8px;
-  background-color: var(--primary-color-light);
+  background-color: var(--background-color);
   border-radius: 100px;
+}
+
+.step #email {
+  margin-bottom: 0;
+}
+
+.final-button {
+  background-color: black;
+  color: white;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  margin-bottom: 8px !important;
+}
+
+.final-button:hover {
+  background-color: var(--primary-color);
 }
 
 /* For chrome, opera, safari, and edge */
@@ -171,7 +217,7 @@ body {
   appearance: none;
   width: 26px;
   height: 26px;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   border-radius: 100px;
   cursor: pointer;
 }
@@ -181,7 +227,7 @@ body {
   appearance: none;
   width: 26px;
   height: 26px;
-  background: var(--primary-color);
+  background: var(--secondary-color);
   border-radius: 100px;
   cursor: pointer;
 }
@@ -193,4 +239,16 @@ body {
 
 #electricBillSlider {
   margin-bottom: 32px;
+}
+
+.step .terms {
+  font-size: 10px;
+}
+
+.step .final-step {
+  margin-bottom: 8px;
+}
+
+.step .final-step-sub {
+  margin-top: 0px;
 }

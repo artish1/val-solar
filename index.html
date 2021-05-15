@@ -4,81 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/1dbf144d09.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <title>Solar Roof</title>
+    <link rel="stylesheet" href="./landing.css" />
+    <title>Solar</title>
   </head>
   <body>
-    <svg viewBox="0 0 500 150" class="wave" preserveAspectRatio="none">
-      <path
-        d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
-        style="stroke: none"
-      ></path>
-    </svg>
-    <div class="safe-padding">
-      <div class="container">
-        <div id="progress-bar"></div>
-        <div class="step-container">
-          <form>
-            <div class="step">
-              <div class="icon-container">
-                <i class="fas fa-money-bill fa-3x"></i>
-              </div>
-              <p>Hi there, let’s find you some savings on your insurance.</p>
-
-              <h2>What type of insurance do you want us to shop for?</h2>
-              <button type="button" class="form-button">Option 1</button>
-              <button type="button" class="form-button">Option 2</button>
-            </div>
-            <div class="step">
-              <h2>How much is your monthly electric bill on average?</h2>
-              <h2 id="electricBillDisplay">$500</h2>
-              <input
-                type="range"
-                min="20"
-                max="500"
-                value="120"
-                class="slider"
-                id="electricBillSlider"
-              />
-              <button type="button" class="form-button">Next</button>
-            </div>
-            <div class="step">
-              <div class="icon-container">
-                <i class="fas fa-solar-panel fa-3x"></i>
-              </div>
-              <h2>Sun exposure lorem ipsum?</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Repudiandae fugit
-              </p>
-              <button type="button" class="form-button">Option 3</button>
-              <button type="button" class="form-button">Option 4</button>
-              <button type="button" class="form-button">Option 2</button>
-              <button type="button" class="form-button">Option 2</button>
-            </div>
-            <div class="step">
-              <div class="icon-container">
-                <i class="fas fa-sun fa-3x"></i>
-              </div>
-              <h2>Test header</h2>
-              <button type="button" class="form-button">Option 5</button>
-              <button type="button" class="form-button">Option 6</button>
-              <button type="button" class="form-button">Option 2</button>
-            </div>
-            <div class="step">
-              <h2>Test header</h2>
-              <button type="button" class="form-button">Option 7</button>
-            </div>
-          </form>
+    <img class="home-img" src="./home.png" />
+    <div class="container">
+      <div class="cta-container">
+        <img class="logo" src="/logo.png" />
+        <div class="cta-align">
+          <h1>Own Your Own Solar Power With $0 Down</h1>
+          <p>
+            Take 60 Seconds to see if you qualify for a new $0 down
+            government-based solar program.
+          </p>
         </div>
+        <a class="cta-button" href="./form.html">Get Started</a>
       </div>
     </div>
   </body>

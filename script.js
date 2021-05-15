@@ -12,6 +12,11 @@ function setStep(stepNumber) {
 
   // show step
   steps[stepNumber].style.display = "block";
+
+  // Update progress bar
+  const completePercentage = ((currentStep + 1) / steps.length) * 100;
+  const progressElem = document.getElementById("progress-bar");
+  progressElem.style.width = `${completePercentage}%`;
 }
 
 function nextStep() {
@@ -38,6 +43,8 @@ function registerSliders() {
     electricBillDisplay.textContent = `$${val}`;
   });
 }
+
+// Progress bar
 
 window.addEventListener("load", () => {
   registerFormButtons();

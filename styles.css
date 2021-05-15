@@ -1,8 +1,26 @@
 /* Font import */
 @import url("https://fonts.googleapis.com/css2?family=Nunito&family=Ubuntu&display=swap");
 
+/* Colors */
+:root {
+  /* --background-color: #f6f7f9; */
+  /* --primary-color: #f39b6d; */
+
+  /* Dark Mode? */
+  /* --container-color: #242424; */
+  /* --background-color: #292b30; */
+  /* --text-color: #e4d8d8; */
+
+  --primary-color: #ffd97d;
+  --primary-color-light: #ffe9b6b7;
+  --background-color: #f6f7f9;
+  --container-color: #ffffff;
+  --text-color: #524e4d;
+  --secondary-text-color: #6e6b6a;
+}
+
 body {
-  background-color: #f6f7f9;
+  background-color: var(--background-color);
   margin: 0;
   display: flex;
   justify-content: center;
@@ -11,64 +29,140 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.wave {
+  position: absolute;
+  bottom: 0;
+  z-index: -1;
+  height: 60%;
+  width: 100%;
+}
+
+.wave path {
+  fill: var(--primary-color);
+}
+
+.safe-padding {
+  padding: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 /* Container */
 
 .container {
-  min-height: 150px;
-  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  min-height: 300px;
+  max-width: 700px;
   width: 100%;
-  padding: 32px;
-  background-color: #ffffff;
-  border-radius: 10px;
+  /* padding: 32px; */
+  /* background-color: #ffffff; */
+  background-color: var(--container-color);
+  border-radius: 7px;
   color: #454140;
   box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.14);
 
   transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
   transition: height 1s ease;
+  overflow: hidden;
+}
+
+.container form {
+  padding: 40px;
+  width: 100%;
+}
+
+/* Progress bar */
+
+#progress-bar {
+  height: 7px;
+  width: 100%;
+  background-color: var(--primary-color);
+  border-radius: 7px;
+  transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 /* Steps */
 
 .step {
   display: none;
+  width: 100%;
+}
+
+.step i {
+  /* font-size: 30px; */
+  color: var(--primary-color);
 }
 
 .step h2 {
   text-align: center;
-  font-size: 30px;
+  font-size: 22px;
+  margin: 24px;
+  color: var(--text-color);
+}
+
+.step p {
+  text-align: center;
+  font-size: 14.5px;
+  color: var(--secondary-text-color);
+  opacity: 0.7;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.step-container {
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-button {
-  background-color: #f6f7f9;
+  background-color: inherit;
   width: 100%;
-  height: 60px;
-  border-radius: 100px;
+  height: 50px;
+  border: 1px solid #45414035;
+  border-radius: 7px;
 
   margin-bottom: 24px;
 
   /* Button Text */
-  color: #454140;
-  font-size: 16px;
+  color: var(--text-color);
+  font-size: 14px;
   letter-spacing: 1.1px;
   font-weight: 800;
 
   cursor: pointer;
   transition: all 0.2s ease;
-  border: none;
+  /* border: none; */
   outline: none;
 }
 
 .form-button:hover {
-  background-color: #ffd97d;
-  color: #454140;
+  /* background-color: var(--primary-color); */
+  border-color: var(--primary-color);
 }
 
 /* Sliders */
 .slider {
   width: 100%;
   appearance: none;
-  height: 16px;
-  background-color: #ffebbecc;
+  height: 8px;
+  background-color: var(--primary-color-light);
   border-radius: 100px;
 }
 
@@ -77,7 +171,7 @@ body {
   appearance: none;
   width: 26px;
   height: 26px;
-  background: #ffd166;
+  background: var(--primary-color);
   border-radius: 100px;
   cursor: pointer;
 }
@@ -87,7 +181,16 @@ body {
   appearance: none;
   width: 26px;
   height: 26px;
-  background: #ffd166;
+  background: var(--primary-color);
   border-radius: 100px;
   cursor: pointer;
+}
+
+#electricBillDisplay {
+  margin: 32px;
+  font-size: 21px;
+}
+
+#electricBillSlider {
+  margin-bottom: 32px;
 }

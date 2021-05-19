@@ -14,14 +14,20 @@ function setStep(stepNumber) {
   steps[stepNumber].style.display = "block";
 
   // Update progress bar
-  const completePercentage = ((currentStep + 1) / steps.length) * 100;
+  const completePercentage = ((stepNumber + 1) / steps.length) * 100;
   const progressElem = document.getElementById("progress-bar");
   progressElem.style.width = `${completePercentage}%`;
+
+  currentStep = stepNumber;
 }
 
 function nextStep() {
+  const steps = document.querySelectorAll(".step");
+  if (currentStep >= steps.length - 1) return;
+
   currentStep++;
   setStep(currentStep);
+  history.pushState({ step: currentStep }, null, "form.html");
 }
 
 // Register events on all form-buttons
@@ -31,7 +37,6 @@ function registerFormButtons() {
   btns.forEach((btnElem) => {
     btnElem.addEventListener("click", nextStep);
   });
-  for (let i = 0; i < btns.length; i++) {}
 }
 
 //-------------------- Sliders --------------------
@@ -44,10 +49,19 @@ function registerSliders() {
   });
 }
 
-// Progress bar
-
 window.addEventListener("load", () => {
   registerFormButtons();
   registerSliders();
   setStep(currentStep);
+  history.replaceState({ step: currentStep }, null, "form.html");
 });
+
+window.onpopstate = (event) => {
+  if (event.state) {
+    console.log("Push state/replaceState", event.state);
+    const { step } = event.state;
+    if (step !== null && step !== undefined) setStep(step);
+  } else {
+    setStep(0);
+  }
+};

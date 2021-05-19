@@ -67,7 +67,7 @@ body {
 }
 
 .safe-padding {
-  padding: 24px;
+  padding: 16px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -253,4 +253,17 @@ body {
 
 .step .final-step-sub {
   margin-top: 0px;
+}
+
+@media (max-width: 480px) {
+  .step h2 {
+    margin: 24px 0px;
+    /* font-size: 5.3vw; */
+  }
+}
+
+@media (max-width: 420px) {
+  .step h2 {
+    font-size: 4.8vw;
+  }
 }

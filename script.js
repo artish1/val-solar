@@ -1,6 +1,14 @@
+import { setField, store } from "./store.js";
+
 let currentStep = 0;
+let submitted = false;
 
 function setStep(stepNumber) {
+  const finishedElem = document.querySelector(".finished");
+  hide(finishedElem);
+  // don't show steps when already submitted
+  if (submitted) return;
+
   const steps = document.querySelectorAll(".step");
   if (stepNumber >= steps.length) return;
 
@@ -25,6 +33,14 @@ function setStep(stepNumber) {
   updateArrowVisibility();
 }
 
+function hideAllSteps() {
+  const steps = document.querySelectorAll(".step");
+
+  steps.forEach((stepElem) => {
+    stepElem.style.display = "none";
+  });
+}
+
 function nextStep() {
   if (currentStep >= getMaxSteps() - 1) return;
 
@@ -33,8 +49,6 @@ function nextStep() {
   history.pushState({ step: currentStep }, null, "form.html");
 }
 
-function prevStep() {}
-
 // Register events on all form-buttons
 function registerFormButtons() {
   const btns = document.querySelectorAll(".form-button");
@@ -42,14 +56,50 @@ function registerFormButtons() {
   btns.forEach((btnElem) => {
     btnElem.addEventListener("click", nextStep);
   });
+
+  const answerBtns = document.querySelectorAll(".answer-button");
+  answerBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const stepValue = btn.innerText.trim();
+      const fieldName = btn.parentElement.getAttribute("propName");
+      setField(fieldName, stepValue);
+    });
+  });
+
+  // -- continues
+  const continueBtns = document.querySelectorAll(".continue-button");
+  continueBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const stepValue = document.getElementById(btn.getAttribute("for")).value;
+      const fieldName = btn.parentElement.getAttribute("propName");
+      setField(fieldName, stepValue);
+    });
+  });
+
+  const finalBtn = document.querySelectorAll(".final-button");
+  finalBtn.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const fNameElem = document.getElementById("first-name");
+      const lNameElem = document.getElementById("last-name");
+      const phoneElem = document.getElementById("phone-number");
+
+      setField("firstname", fNameElem.value);
+      setField("lastname", lNameElem.value);
+      setField("phone", phoneElem.value);
+
+      submit();
+    })
+  );
 }
 
 //-------------------- Sliders --------------------
 function registerSliders() {
-  const electricBillSlider = document.querySelector("#electricBillSlider");
+  const monthly_electric_bill = document.querySelector(
+    "#monthly_electric_bill"
+  );
   const electricBillDisplay = document.querySelector("#electricBillDisplay");
-  electricBillSlider.addEventListener("input", (e) => {
-    const val = electricBillSlider.value;
+  monthly_electric_bill.addEventListener("input", () => {
+    const val = monthly_electric_bill.value;
     electricBillDisplay.textContent = `$${val}`;
   });
 }
@@ -66,17 +116,66 @@ function registerArrowButtons() {
 
 function updateArrowVisibility() {
   const bArrow = document.getElementById("back-arrow");
-  if (currentStep < 1) bArrow.style.visibility = "hidden";
+  if (currentStep < 1 || submitted) bArrow.style.visibility = "hidden";
   else bArrow.style.visibility = "visible";
 
   const fArrow = document.getElementById("forward-arrow");
-  if (currentStep >= getMaxSteps() - 1) {
+  if (currentStep >= getMaxSteps() - 1 || submitted) {
     fArrow.style.visibility = "hidden";
   } else fArrow.style.visibility = "visible";
 }
 
 function getMaxSteps() {
   return document.querySelectorAll(".step").length;
+}
+
+async function submit() {
+  const finishedElem = document.querySelector(".finished");
+  const loadingIcon = document.querySelector(".loading-icon");
+  const success = document.getElementById("success");
+  const error = document.getElementById("error");
+
+  // Hide all steps
+  hideAllSteps();
+
+  // show loading
+  show(finishedElem);
+
+  // send request
+  const response = await fetch("http://localhost:3000/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(store),
+  }).catch((err) => console.log("Error: ", err));
+
+  // Hide loading
+  hide(loadingIcon);
+
+  if (response.status === 200 || response.status === 201) {
+    show(success);
+    submitted = true;
+    // Reset navigation state
+    history.go((getMaxSteps() - 1) * -1);
+    updateArrowVisibility();
+    const stepController = document.querySelector(".step-controller");
+    hide(stepController);
+  } else {
+    const errorObj = await response.json();
+    if (errorObj)
+      error.getElementsByTagName("p").item(0).innerText = errorObj.msg;
+
+    show(error);
+  }
+}
+
+function hide(element) {
+  element.classList.add("hidden");
+}
+
+function show(element) {
+  element.classList.remove("hidden");
 }
 
 window.addEventListener("load", () => {
@@ -90,7 +189,9 @@ window.addEventListener("load", () => {
 window.onpopstate = (event) => {
   if (event.state) {
     const { step } = event.state;
-    if (step !== null && step !== undefined) setStep(step);
+    if (step !== null && step !== undefined) {
+      if (!submitted) setStep(step);
+    }
   } else {
     setStep(0);
   }

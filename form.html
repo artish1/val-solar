@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" href="./normalize.css" />
     <link rel="stylesheet" href="./styles.css" />
-    <script src="./script.js"></script>
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./store.js"></script>
     <script
       src="https://kit.fontawesome.com/1dbf144d09.js"
       crossorigin="anonymous"
@@ -52,7 +53,7 @@
           <div id="progress-bar"></div>
           <div class="step-container">
             <form>
-              <div class="step">
+              <div class="step" propName="property_type">
                 <div class="icon-container">
                   <i class="fas fa-solar-panel fa-3x"></i>
                 </div>
@@ -61,12 +62,18 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Repudiandae fugit
               </p> -->
-                <button type="button" class="form-button">Home I own</button>
-                <button type="button" class="form-button">Home I rent</button>
-                <button type="button" class="form-button">Business</button>
+                <button type="button" class="form-button answer-button">
+                  Home I own
+                </button>
+                <button type="button" class="form-button answer-button">
+                  Home I rent
+                </button>
+                <button type="button" class="form-button answer-button">
+                  Business
+                </button>
               </div>
 
-              <div class="step">
+              <div class="step" propName="monthly_electric_bill">
                 <div class="icon-container">
                   <i class="fas fa-money-bill fa-3x"></i>
                 </div>
@@ -78,23 +85,35 @@
                   max="500"
                   value="120"
                   class="slider"
-                  id="electricBillSlider"
+                  id="monthly_electric_bill"
                 />
-                <button type="button" class="form-button continue-button">
+                <button
+                  type="button"
+                  class="form-button continue-button"
+                  for="monthly_electric_bill"
+                >
                   Next
                 </button>
               </div>
-              <div class="step">
+              <div class="step" propName="sunlight_amount">
                 <div class="icon-container">
                   <i class="fas fa-sun fa-3x"></i>
                 </div>
                 <h2>How much sunlight does your roof get?</h2>
-                <button type="button" class="form-button">Full Sun</button>
-                <button type="button" class="form-button">Partial Shade</button>
-                <button type="button" class="form-button">Full Shade</button>
-                <button type="button" class="form-button">I'm not sure</button>
+                <button type="button" class="form-button answer-button">
+                  Full Sun
+                </button>
+                <button type="button" class="form-button answer-button">
+                  Partial Shade
+                </button>
+                <button type="button" class="form-button answer-button">
+                  Full Shade
+                </button>
+                <button type="button" class="form-button answer-button">
+                  I'm not sure
+                </button>
               </div>
-              <div class="step">
+              <div class="step" propName="credit_score">
                 <div class="icon-container">
                   <i class="fas fa-sun fa-3x"></i>
                 </div>
@@ -102,12 +121,20 @@
                   What's the best estimated credit score in your household?
                 </h2>
                 <p>$0 Down Financing Pre-Approval Check</p>
-                <button type="button" class="form-button">below 650</button>
-                <button type="button" class="form-button">651-700</button>
-                <button type="button" class="form-button">701-750</button>
-                <button type="button" class="form-button">750+</button>
+                <button type="button" class="form-button answer-button">
+                  below 650
+                </button>
+                <button type="button" class="form-button answer-button">
+                  651-700
+                </button>
+                <button type="button" class="form-button answer-button">
+                  701-750
+                </button>
+                <button type="button" class="form-button answer-button">
+                  750+
+                </button>
               </div>
-              <div class="step">
+              <div class="step" propName="address">
                 <div class="icon-container">
                   <i class="fas fa-home fa-3x"></i>
                 </div>
@@ -116,12 +143,16 @@
                   We'll use satellite imaging to see if your roof faces the
                   right direction for solar
                 </p>
-                <input type="text" class="address" placeholder="Address" />
-                <button type="button" class="form-button continue-button">
+                <input type="text" id="address" placeholder="Address" />
+                <button
+                  type="button"
+                  class="form-button continue-button"
+                  for="address"
+                >
                   Next
                 </button>
               </div>
-              <div class="step">
+              <div class="step" propName="email">
                 <div class="icon-container">
                   <i class="fas fa-envelope-open-text fa-3x"></i>
                 </div>
@@ -131,11 +162,15 @@
                   By entering your email you agree to allow us to email you in
                   regards to your solar results.
                 </p>
-                <button type="button" class="form-button continue-button">
+                <button
+                  type="button"
+                  class="form-button continue-button"
+                  for="email"
+                >
                   Next
                 </button>
               </div>
-              <div class="step">
+              <div class="step" propName="final">
                 <h2 class="final-step">Final step</h2>
                 <p class="final-step-sub">Let's finalize your results</p>
                 <input type="text" id="first-name" placeholder="First name" />
@@ -152,6 +187,24 @@
                   condition of purchase. I agree to the Terms of Use and have
                   read the Privacy Policy
                 </p>
+              </div>
+              <div class="finished hidden">
+                <i
+                  class="fa fa-2x fa fa-circle-o-notch fa-spin loading-icon"
+                ></i>
+                <div id="success" class="status-container hidden">
+                  <i class="far fa-check-circle fa-3x status-icon"></i>
+                  <h2>Successfully submitted!</h2>
+                  <p>
+                    We have received your submission. Expect a call from us
+                    eventually.
+                  </p>
+                </div>
+                <div id="error" class="status-container hidden">
+                  <i class="fas fa-times fa-3x status-icon"></i>
+                  <h2>There was an error with your submission.</h2>
+                  <p>We're not sure what went wrong.</p>
+                </div>
               </div>
             </form>
           </div>

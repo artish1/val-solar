@@ -75,7 +75,6 @@ body {
   border-radius: 12px;
   height: 48px;
   padding: 1rem 3rem 1rem 1rem;
-  /* background-color: #fff9e8; */
   border: 1px solid black;
 
   box-sizing: border-box;
@@ -100,7 +99,7 @@ body {
 }
 
 .safe-padding {
-  padding: 16px;
+  padding: 8px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -113,13 +112,10 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 
   min-height: 300px;
   width: 100%;
-  /* padding: 32px; */
-  /* background-color: #ffffff; */
   background-color: var(--container-color);
   border-radius: 7px;
   color: #454140;
@@ -137,7 +133,9 @@ body {
 
 .container form {
   padding: 40px;
+  box-sizing: border-box;
   width: 100%;
+  height: 100%;
 }
 
 /* Progress bar */
@@ -196,6 +194,7 @@ body {
 .step-container {
   max-width: 450px;
   width: 100%;
+  min-height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -220,6 +219,10 @@ body {
   transition: all 0.2s ease;
   /* border: none; */
   outline: none;
+}
+
+.form-button.selected {
+  border: 1px solid var(--primary-color);
 }
 
 .form-button:hover {
@@ -296,7 +299,6 @@ body {
 @media (max-width: 480px) {
   .step h2 {
     margin: 24px 0px;
-    /* font-size: 5.3vw; */
   }
 }
 
@@ -304,4 +306,36 @@ body {
   .step h2 {
     font-size: 4.8vw;
   }
+}
+
+.finished {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#success p {
+  font-size: 14.5px;
+  color: var(--secondary-text-color);
+  opacity: 0.85;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.status-icon {
+  color: black;
+}
+
+.hidden {
+  display: none !important;
 }

@@ -23,8 +23,9 @@
 
 body {
   background-color: var(--background-color);
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
   position: relative;
   font-family: "Nunito", sans-serif;
@@ -232,6 +233,7 @@ body {
 
 /* Sliders */
 .slider {
+  -webkit-appearance: none;
   width: 100%;
   appearance: none;
   height: 8px;
@@ -255,9 +257,16 @@ body {
   background-color: var(--primary-color);
 }
 
+.slider::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
 /* For chrome, opera, safari, and edge */
 .slider::-webkit-slider-thumb {
   appearance: none;
+  -webkit-appearance: none;
   width: 26px;
   height: 26px;
   background: var(--secondary-color);
@@ -280,7 +289,7 @@ body {
   font-size: 21px;
 }
 
-#electricBillSlider {
+#monthly_electric_bill {
   margin-bottom: 32px;
 }
 

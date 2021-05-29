@@ -153,6 +153,12 @@ async function submit() {
   // Hide loading
   hide(loadingIcon);
 
+  if (!response) {
+    setErrorMessage("Connection refused. Server might be down");
+    show(error);
+    return;
+  }
+
   if (response.status === 200 || response.status === 201) {
     show(success);
     submitted = true;
@@ -163,9 +169,7 @@ async function submit() {
     hide(stepController);
   } else {
     const errorObj = await response.json();
-    if (errorObj)
-      error.getElementsByTagName("p").item(0).innerText = errorObj.msg;
-
+    if (errorObj) setErrorMessage(errorObj.msg);
     show(error);
   }
 }
@@ -178,11 +182,22 @@ function show(element) {
   element.classList.remove("hidden");
 }
 
+function setErrorMessage(msg) {
+  error.getElementsByTagName("p").item(0).innerText = msg;
+}
+
+function syncBillSlider() {
+  const slider = document.getElementById("monthly_electric_bill");
+  const electricBillDisplay = document.querySelector("#electricBillDisplay");
+  electricBillDisplay.textContent = `$${slider.value}`;
+}
+
 window.addEventListener("load", () => {
   registerFormButtons();
   registerSliders();
   setStep(currentStep);
   registerArrowButtons();
+  syncBillSlider();
   history.replaceState({ step: currentStep }, null, "form.html");
 });
 

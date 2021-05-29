@@ -192,11 +192,25 @@ function syncBillSlider() {
   electricBillDisplay.textContent = `$${slider.value}`;
 }
 
+function initMap() {
+  const input = document.getElementById("address");
+  const center = { lat: 38.664, lng: -121.36035 };
+  const options = {
+    componentRestrictions: { country: "us" },
+    fields: ["address_components", "icon", "name"],
+    origin: center,
+    strictBounds: false,
+  };
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
+  autocomplete.setFields(["place_id", "geometry", "name"]);
+}
+
 window.addEventListener("load", () => {
   registerFormButtons();
   registerSliders();
   setStep(currentStep);
   registerArrowButtons();
+  initMap();
   syncBillSlider();
   history.replaceState({ step: currentStep }, null, "form.html");
 });

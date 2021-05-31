@@ -49,6 +49,7 @@ body {
 
 #forward-arrow {
   transform: rotate(180deg);
+  visibility: hidden;
 }
 
 .step-controller {

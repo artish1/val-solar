@@ -140,7 +140,8 @@ function updateArrowVisibility() {
   const fArrow = document.getElementById("forward-arrow");
   if (currentStep >= getMaxSteps() - 1 || submitted) {
     fArrow.style.visibility = "hidden";
-  } else fArrow.style.visibility = "visible";
+  }
+  // else fArrow.style.visibility = "visible";
 }
 
 function getMaxSteps() {

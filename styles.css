@@ -13,7 +13,8 @@
 
   --primary-color: #ffd97d;
   --primary-color-light: #ffe9b6b7;
-  --secondary-color: #4f517d;
+  --secondary-color: black;
+
   --background-color: #e9ecee;
   --container-color: #ffffff;
 
@@ -191,6 +192,10 @@ body {
   border: none;
   background-color: var(--secondary-color);
   color: white;
+}
+
+.step .continue-button:hover {
+  background-color: var(--primary-color);
 }
 
 .step-container {

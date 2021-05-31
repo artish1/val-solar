@@ -56,7 +56,9 @@ function registerFormButtons() {
   const btns = document.querySelectorAll(".form-button");
 
   btns.forEach((btnElem) => {
-    btnElem.addEventListener("click", nextStep);
+    btnElem.addEventListener("click", () => {
+      if (!btnElem.classList.contains("unqualified-button")) nextStep();
+    });
   });
 
   const answerBtns = document.querySelectorAll(".answer-button");
@@ -65,6 +67,20 @@ function registerFormButtons() {
       const stepValue = btn.innerText.trim();
       const fieldName = btn.parentElement.getAttribute("propName");
       setField(fieldName, stepValue);
+    });
+  });
+
+  const unqualified = document.querySelectorAll(".unqualified-button");
+  unqualified.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      hideAllSteps();
+      submitted = true;
+      // Reset navigation state
+      history.go((currentStep - 1) * -1);
+      updateArrowVisibility();
+      const stepController = document.querySelector(".step-controller");
+      hide(stepController);
+      showUnqualified();
     });
   });
 
@@ -192,6 +208,17 @@ function syncBillSlider() {
   const slider = document.getElementById("monthly_electric_bill");
   const electricBillDisplay = document.querySelector("#electricBillDisplay");
   electricBillDisplay.textContent = `$${slider.value}`;
+}
+
+function showUnqualified() {
+  const el = document.getElementById("unqualified");
+  const steps = document.querySelector(".step-container");
+  const progress = document.querySelector("#progress-bar");
+  hide(steps);
+  show(el);
+  hide(progress);
+  const container = document.querySelector(".container");
+  container.classList.add("center");
 }
 
 function initMap() {

@@ -1,5 +1,7 @@
 import { setField, store } from "./store.js";
 
+const API_ENDPOINT = "https://api.ca-energy.org";
+
 let currentStep = 0;
 let submitted = false;
 
@@ -142,7 +144,7 @@ async function submit() {
   show(finishedElem);
 
   // send request
-  const response = await fetch("http://localhost:3000/submit", {
+  const response = await fetch(`${API_ENDPOINT}/submit`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -209,6 +211,7 @@ window.addEventListener("load", () => {
   registerFormButtons();
   registerSliders();
   setStep(currentStep);
+  // hideAllSteps();
   registerArrowButtons();
   initMap();
   syncBillSlider();

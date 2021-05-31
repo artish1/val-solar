@@ -341,10 +341,26 @@ body {
   letter-spacing: 1px;
 }
 
+.success-color {
+  color: #008037 !important;
+}
+
 .status-icon {
   color: black;
 }
 
 .hidden {
   display: none !important;
+}
+
+.expect {
+  padding: 0;
+  margin: 0;
+}
+
+.expect {
+  font-weight: bold !important;
+  font-family: "Ubuntu";
+  color: black !important;
+  opacity: 1 !important;
 }

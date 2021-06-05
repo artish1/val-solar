@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Ubuntu&display=swap");
+
+:root {
+  --text-color: #3a3a3a;
+  --secondary-text-color: #6e6b6a;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+  padding-bottom: 100px;
+}
+
+h3,
+h2,
+h1 {
+  color: var(--text-color);
+}
+h1 {
+  font-size: 25px;
+}
+
+h2 {
+  font-size: 18px;
+}
+h3 {
+  font-size: 17.5px;
+}
+
+p {
+  color: var(--secondary-text-color);
+  text-align: left;
+  font-size: 16px;
+}
+
+.indent {
+  margin-left: 32px;
+}
+
+br {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  height: 1px;
+  width: 100%;
+}

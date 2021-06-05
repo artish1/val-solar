@@ -247,10 +247,6 @@ body {
   border-radius: 100px;
 }
 
-.step #email {
-  margin-bottom: 0;
-}
-
 .final-button {
   background-color: black;
   color: white;

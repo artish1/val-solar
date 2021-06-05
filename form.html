@@ -164,6 +164,7 @@
                 <button
                   type="button"
                   class="form-button continue-button"
+                  disabled
                   for="email"
                 >
                   Next
@@ -173,8 +174,18 @@
                 <h2 class="final-step">Final step</h2>
                 <p class="final-step-sub">Let's finalize your results</p>
                 <input type="text" id="first-name" placeholder="First name" />
+                <div class="error hidden" id="first-name-error">
+                  <i class="fas fa-times"></i>First name is required
+                </div>
                 <input type="text" id="last-name" placeholder="Last name" />
+                <div class="error hidden" id="last-name-error">
+                  <i class="fas fa-times"></i>Last Name is required
+                </div>
                 <input type="text" id="phone-number" placeholder="Phone #" />
+                <div class="error hidden" id="phone-number-error">
+                  <i class="fas fa-times"></i>Phone Number is required
+                </div>
+
                 <button type="button" class="form-button final-button">
                   Get My Results
                 </button>
@@ -200,9 +211,8 @@
                   <p class="expect">What to expect next:</p>
                   <p>
                     In the next 24 hours, one of our specialist will reach out
-                    to you if you qualify for the no-money down solar program to
-                    discuss your options and answer any questions you might
-                    have.
+                    to you regarding your qualification and discuss your options
+                    for getting solar for your home.
                   </p>
                 </div>
                 <div id="error" class="status-container hidden">

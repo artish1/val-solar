@@ -398,3 +398,20 @@ body {
 .center {
   justify-content: center !important;
 }
+
+.error {
+  color: rgb(195, 0, 0);
+  font-size: 15.5px;
+  padding: 8px;
+  text-align: left;
+  padding-left: 16px;
+  border: 1px solid rgb(195, 0, 0);
+  border-radius: 8px;
+  background-color: rgba(195, 0, 0, 0.185);
+  transform: translateY(-14px);
+}
+
+.error i {
+  color: rgba(173, 11, 11, 0.89);
+  margin-right: 8px;
+}

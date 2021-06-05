@@ -230,3 +230,16 @@ body {
 .secondary-color {
   color: var(--secondary-color) !important;
 }
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links-container a:first-child {
+  margin-right: 8px;
+}
+.links-container a:last-child {
+  margin-left: 8px;
+}

@@ -15,6 +15,7 @@
   --primary-color-light: #ffe9b6b7;
   --secondary-color: black;
 
+  --disabled-color: #e2e2e2;
   --background-color: #e9ecee;
   --container-color: #ffffff;
 
@@ -196,6 +197,10 @@ body {
 
 .step .continue-button:hover {
   background-color: var(--primary-color);
+}
+
+.step .continue-button:disabled {
+  background-color: var(--disabled-color);
 }
 
 .step-container {

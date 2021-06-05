@@ -415,3 +415,12 @@ body {
   color: rgba(173, 11, 11, 0.89);
   margin-right: 8px;
 }
+
+a {
+  color: rgb(15, 124, 160);
+  margin: 3px;
+}
+
+/* .step p.terms {
+  text-align: center;
+} */

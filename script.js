@@ -295,19 +295,23 @@ function checkSubmitFields() {
     show(lNameError);
   } else hide(lNameError);
 
-  if (phone.length < 10) {
+  if (phone.value.length < 10) {
     valid = false;
     // show error popup
     show(phoneError);
     phoneError.textContent = "Phone number requires at least 10 digits";
   } else {
     const phoneRe = /^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/;
-    if (!phoneRe.test(phone.value)) {
-      valid = false;
-      // show error popup
-      show(phoneError);
+    if (
+      phoneRe.test(phone.value) ||
+      /^\d+$/.test(phone.value.replace(/\s/g, ""))
+    ) {
+      hide(phoneError);
+    } else {
+      // Is not atleast a 10 digit number or valid phone number format
       phoneError.textContent = "Invalid phone number. Example: (111) 111-1111";
-    } else hide(phoneError);
+      show(phoneError);
+    }
   }
 
   return valid;
